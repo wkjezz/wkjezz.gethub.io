@@ -1,0 +1,154 @@
+/*Structure =====*/
+
+/* Page Grid ******/
+
+body {
+    display: grid;
+    grid-gap: .5rem;
+
+    /* Arrange in three rows: each as tall as their content */
+    grid-template-rows: max-content max-content max-content;
+
+    /* Arrange in two columns: 
+     - right-hand-side a fixed width, 
+     - left-hand-side with the remaining space */
+    grid-template-columns: 1fr 10em;
+
+    /* As a default, in case the screen is VERY wide, 
+     - limit page width to a sensible maximum 
+     - and centre the page in the screen */
+    max-width: 90rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+nav {
+    /* Place navigation across the top of the page:
+     - in first row, from first to last column */
+    grid-row: 1;
+    grid-column: 1 / -1;
+}
+
+footer {
+    /* Place navigation across the top of the page:
+     - in first row, from first to last column */
+    grid-row: -1;
+    grid-column: 1 / -1;
+}
+
+/* Main Grid ******/
+main {
+    display: grid;
+    grid-gap: 1rem;
+
+    /* Three evenly spaced columns */
+    grid-template-columns: 1fr 2fr;
+}
+
+main header {
+    /* Place header across the top of the main element:
+     - from first to last column */
+    grid-column: 1 / -1;
+}
+
+/* Page Formatting ******/
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: #808080;
+    background-color: #eefbfb;
+}
+
+nav {        
+    background-color: #00A4EF;
+}
+
+footer {        
+    background-color: #00A4EF;
+    color: #fff;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+}
+
+/* Content ******/
+.responsive {
+    max-width: 100%;
+    height: auto;
+}
+main section {
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 1rem;
+    background-color: rgba(0,0,0,0.1);
+    box-shadow: 0 5px 10px rgba(0,0,0,.25);
+}
+/*Navigation Bar *****/
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #00A4EF;
+}
+
+nav li {
+    font-size: 1.2rem;
+    display: inline-block;
+    padding:0.2rem 0.5rem 0.2rem 0.5rem;
+    vertical-align: middle;
+}
+
+.nav_link:hover {    
+    border-bottom: solid 0.2rem #FFA500;
+}
+
+nav a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+#navlogo {
+  height: 25px;
+  width: 25px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+color: #00A4EF;
+    text-align: center;
+}
+
+/* Responsive rules / media queries ******/
+@media screen and (max-width: 70rem) {
+    main {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Hide sidebar column on tablets */
+@media screen and (max-width: 50rem) {
+    body {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        display: none;
+    }
+}
+
+/* Down to one columns of sections on smartphone screens */
+@media screen and (max-width: 30rem) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    body {
+        /* Remove 8 pixel default margin around outside of page */
+        margin: 0;
+    }
+}
+
+/* Show menu options underneath each other on smaller smartphone screens */
+@media screen and (max-width: 25rem) {
+    nav li {
+        display: block;
+    }
+}
